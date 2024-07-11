@@ -17,8 +17,13 @@ class Product(models.Model):
         verbose_name="Изображение",
         help_text="Загрузите изображение товара",
     )
-    category = models.CharField(
-        max_length=100, verbose_name="Категория", help_text="Введите категорию товара"
+    category = models.ForeignKey(
+        on_delete=models.SET_NULL,
+        verbose_name="Категория",
+        help_text="Введите категорию товара",
+        blank=True,
+        null=True,
+        related_name="products",
     )
     price = models.PositiveIntegerField(
         verbose_name="Цена за покупку", help_text="Введите цену за покупку  товара"
