@@ -1,4 +1,4 @@
-django_task_19.2
+django_my_project
 
 Создание интернет-магазина. 
 
