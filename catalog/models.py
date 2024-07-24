@@ -38,7 +38,9 @@ class Product(models.Model):
         help_text="Введите наименование товара",
     )
     description = models.TextField(
-        verbose_name="Описание", help_text="Введите описание товара"
+        verbose_name="Описание", help_text="Введите описание товара",
+        blank=True,
+        null=True,
     )
     image = models.ImageField(
         upload_to="catalog/image",
@@ -59,13 +61,16 @@ class Product(models.Model):
     price = models.PositiveIntegerField(
         verbose_name="Цена за покупку", help_text="Введите цену за покупку  товара"
     )
-    created_at = models.DateTimeField(
-        verbose_name="Дата записи в БД", help_text="Введите дату записи в БД"
-    )
-    updated_at = models.DateTimeField(
-        verbose_name="Дата обновления записи в БД",
-        help_text="Введите дату обновления записи в БД"
-    )
+    # created_at = models.DateTimeField(
+    #     verbose_name="Дата записи в БД", help_text="Введите дату записи в БД"
+    # )
+    # updated_at = models.DateTimeField(
+    #     verbose_name="Дата обновления записи в БД",
+    #     help_text="Введите дату обновления записи в БД"
+    # )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Товар"
