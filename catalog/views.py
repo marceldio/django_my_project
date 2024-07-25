@@ -17,3 +17,7 @@ def contact(request):
         message = request.POST.get('message')
         print(f'You have new message from {name}({tel}): {message}')
     return render(request, 'main/contact.html')
+
+
+def card(request):
+    return render(request, 'main/card.html')
