@@ -15,13 +15,13 @@
     <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
 
     <!-- Favicons -->
-    <!--    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">-->
-    <!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">-->
-    <!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">-->
-    <!--    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">-->
-    <!--    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">-->
-    <!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">-->
-    <!--    <meta name="theme-color" content="#712cf9">-->
+        <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+
+        <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+        <meta name="theme-color" content="#712cf9">
 
 
     <style>
@@ -220,34 +220,8 @@
         </div>
     </section>
 
-    <div class="album py-5 bg-body-tertiary">
-        <div class="container">
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"/>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Место для картинки</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">Краткое описание товара.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+{% block content %}
+{% endblock %}
 </main>
 
 <footer class="pt-4 my-md-8 pt-md-5 border-top">
