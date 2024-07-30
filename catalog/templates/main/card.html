@@ -12,9 +12,14 @@
                         <p class="card-text">Категория: {{ product.category }}</p>
                         <p class="card-text">Описание: {{ product.description | slice:100 }}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a class="btn btn-primary" href="{% url 'catalog:card' product.pk %}" role="button">Купить</a>
-                                <a class="btn btn-secondary" href="{% url 'catalog:products_list' %}" role="button">В каталог</a>
+
+                            <div class="d-grid gap-2 d-md-block">
+
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="{% url 'catalog:card' product.pk %}" role="button">Купить</a>
+                                    <a class="btn btn-secondary" href="{% url 'catalog:products_list' %}" role="button">В
+                                        каталог</a>
+                                </div>
 
                             </div>
 
