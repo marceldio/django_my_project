@@ -1,12 +1,19 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 
 from catalog.models import Product
 
 
-def products_list(requests):
-    products = Product.objects.all()
-    context = {'products': products}
-    return render(requests, 'main/products_list.html', context)
+class ProductListView(ListView):
+    model = Product
+
+    # app.name/<model_name>_<action
+    # catalog/product_list.html
+
+# def products_list(requests):
+#     products = Product.objects.all()
+#     context = {'products': products}
+#     return render(requests, 'main/products_list.html', context)
 
 def contact(request):
     if request.method == 'POST':
