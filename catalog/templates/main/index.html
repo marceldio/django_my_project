@@ -15,13 +15,13 @@
     <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
 
     <!-- Favicons -->
-        <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
 
-        <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
-        <meta name="theme-color" content="#712cf9">
+    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
 
 
     <style>
@@ -132,7 +132,7 @@
             <use href="#circle-half"></use>
         </svg>
         <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-    </button># from .models import Product
+    </button>
     <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
             <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
@@ -174,7 +174,7 @@
 </div>
 
 <header data-bs-theme="dark">
-{% include 'main/includes/inc_menu.html'%}
+    {% include 'main/includes/inc_menu.html'%}
 </header>
 
 <main>
@@ -186,15 +186,15 @@
                 <h2 class="fw-light">интернет-магазина</h2>
                 <p class="lead text-body-secondary">Он может быть таким или совершенно другим.</p>
                 <p>
-                    <a href="#" class="btn btn-primary my-2">Кнопка</a>
-                    <a href="#" class="btn btn-secondary my-2">Еще кнопка</a>
+                    <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">В каталог</a>
+                    <a class="btn btn-secondary" href="{% url 'catalog:product_create' %}" role="button">Создать</a>
                 </p>
             </div>
         </div>
     </section>
 
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 </main>
 
 <footer class="pt-4 my-md-8 pt-md-5 border-top">
