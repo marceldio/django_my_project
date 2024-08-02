@@ -13,7 +13,7 @@
                         <p class="card-text">Описание: {{ product.description | slice:100 }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="{% url 'catalog:card' product.pk %}" role="button">Перейти</a>
+                                <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}" role="button">Перейти</a>
 
                             </div>
 
