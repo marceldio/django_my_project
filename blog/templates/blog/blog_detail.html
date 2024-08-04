@@ -1,0 +1,37 @@
+{% extends 'main/index.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4 class="card-title">"{{ object.title }}" ({{ object.slug }})</h4>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ object.content }}
+                    </p>
+                   <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="d-grid gap-2 d-md-block">
+
+                            <div class="btn-group">
+                                <a class="btn btn-secondary" href="
+                                    {% url 'blog:blog_list' %}" role="button">Назад в блог</a>
+                            </div>
+                            <div class="card-footer">
+                                Просмотры: {{ object.view_counter}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
