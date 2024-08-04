@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.models import Product
@@ -44,6 +44,9 @@ class ProductUpdateView(UpdateView):
     fields = ("product", "description", "image", "category", "price")
     template_name = ('main/product_form.html')
     success_url = reverse_lazy('catalog:product_list')
+
+    def get_success_url(self):
+        return reverse('catalog:product_detail', args=[self.kwargs.get('pk')])
 
 
 class ProductDeleteView(DeleteView):
