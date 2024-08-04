@@ -49,6 +49,14 @@ class Product(models.Model):
         verbose_name="Изображение",
         help_text="Загрузите изображение товара",
     )
+    # photo = models.ImageField(
+    #     upload_to="catalog/photo",
+    #     blank=True,
+    #     null=True,
+    #     verbose_name="Изображение",
+    #     help_text="Загрузите изображение",
+    # )
+
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
@@ -70,7 +78,14 @@ class Product(models.Model):
     # )
 
     created_at = models.DateTimeField(auto_now_add=True)
+
     updated_at = models.DateTimeField(auto_now_add=True)
+
+    view_counter = models.PositiveIntegerField(
+        default=0,
+        verbose_name="Счетчик просмотров",
+        help_text="Количество просмотров")
+
 
     class Meta:
         verbose_name = "Товар"
