@@ -4,15 +4,6 @@ from blog.views import BlogCreateView, BlogListView, BlogDetailView, BlogUpdateV
 
 app_name = BlogConfig.name
 
-# urlpatterns = [
-#     path('', ProductListView.as_view(), name='product_list'),
-#
-#     path('catalog/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
-#     path('create/', ProductCreateView.as_view(), name='product_create'),
-#
-#     path('contacts', contact, name='contacts'),
-# ]
-
 urlpatterns = [
     path('create/', BlogCreateView.as_view(), name='blog_create'),
     path('', BlogListView.as_view(), name='blog_list'),

@@ -7,16 +7,17 @@
         <div class="col-12 mb-5">
             <a class="btn btn-primary" href="{% url 'blog:blog_create' %}">Добавить статью</a>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-2">
+
             {% for object in object_list %}
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="{{ blog.image | media_filter }}">
+                    <img src="{{ object.image | media_filter }}">
                     <div class="card-body">
                         <p class="card-text">
                             {% if object.is_published %}
                             {{ object.title }}
-                            {{ object.content }}
+
                             {% else %}
                             <span class="badge bg-secondary text-white">
                                 {{ object.title }}
