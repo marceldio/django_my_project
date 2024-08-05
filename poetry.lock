@@ -202,6 +202,17 @@ qa = ["flake8 (==5.0.4)", "mypy (==0.971)", "types-setuptools (==67.2.0.1)"]
 testing = ["Django", "attrs", "colorama", "docopt", "pytest (<7.0.0)"]
 
 [[package]]
+name = "listview"
+version = "0.1.0"
+description = ""
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "listview-0.1.0-py3-none-any.whl", hash = "sha256:3daa47cb34cc3692520967cf23876288ab5cd55c35e1fc98d84ecb5b832a7ccf"},
+    {file = "listview-0.1.0.tar.gz", hash = "sha256:e162e6edf4dc81accbf138ffd20c68d85526cdbd3832f17824ee68aac5996bc3"},
+]
+
+[[package]]
 name = "matplotlib-inline"
 version = "0.1.7"
 description = "Inline Matplotlib backend for Jupyter"
@@ -525,6 +536,16 @@ files = [
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "pytils"
+version = "0.4.1"
+description = "Russian-specific string utils"
+optional = false
+python-versions = "^3.7"
+files = [
+    {file = "pytils-0.4.1.tar.gz", hash = "sha256:aa109b1bc0ec4bdb7c9768520110348d8aeb0706600e6cf641272e6850e26eab"},
+]
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -609,4 +630,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "8596bd44a6afec0a2d5868aaf2ed560184d927dd78545a0fea557fef7163a70f"
+content-hash = "6bd8721a40cbafc395d445e2047c2966667013f08298d07c042554bc17a4f82c"
