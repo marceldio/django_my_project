@@ -24,5 +24,6 @@ from catalog.views import contact
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('catalog.urls', 'catalog')),
+    path('blog/', include('blog.urls', 'blog')),
     path('contact/', contact)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
