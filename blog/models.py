@@ -5,24 +5,25 @@ class Blog(models.Model):
     title = models.CharField(
         max_length=200,
         verbose_name="Заголовок",
-        help_text="Введите заголовок",
+        help_text="Введите заголовок"
     )
     slug = models.CharField(
         max_length=200,
-        verbose_name="Слаг",
+        verbose_name='slug',
         help_text="Слаг для создания уникальной ссылки",
-        unique=True,
+         blank=True,
+        null=True
     )
     content = models.TextField(
         verbose_name="Содержание",
-        help_text="Введите текст",
+        help_text="Введите текст"
     )
     image = models.ImageField(
         upload_to="blog/photo",
         blank=True,
         null=True,
         verbose_name="Изображение",
-        help_text="Загрузите изображение",
+        help_text="Загрузите изображение"
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
@@ -30,9 +31,10 @@ class Blog(models.Model):
     view_counter = models.PositiveIntegerField(
         default=0,
         verbose_name="Счетчик просмотров",
-        help_text="Количество просмотров")
-    slug = models.CharField(max_length=450,
-                            verbose_name= 'slug', blank=True, null=True)
+        help_text="Количество просмотров",
+        editable=False
+    )
+
 
 
     def __str__(self):

@@ -36,7 +36,7 @@ class BlogDetailView(DetailView):
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
         self.object.view_counter += 1
-        self.object.save()
+        self.object.save(update_fields=['view_counter'])  # Only update view_counter field
         return self.object
 
 
