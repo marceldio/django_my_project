@@ -8,15 +8,10 @@
                     <div class="card">
                         <div class="card-body">
                             {% csrf_token %}
-                            {{ form.as_p }}
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            {% if object %}
-                            Сохранить
-                            {% else %}
-                            Создать
-                            {% endif %}
-                        </button>
+                        <p class="card-text">Удалить этот товар? {{ object.product }}</p>
+                        <button type="submit" class="btn btn-danger">Подтвердить</button>
+                        <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Отменить</a>
                     </div>
                 </form>
             </div>
