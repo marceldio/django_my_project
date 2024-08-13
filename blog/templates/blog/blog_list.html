@@ -2,7 +2,6 @@
 {% load my_tags %}
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
-
     <div class="container">
         <div class="col-12 mb-5">
             <a class="btn btn-primary" href="{% url 'blog:blog_create' %}">Добавить статью</a>
@@ -33,7 +32,6 @@
                                 <a class="btn btn-danger" href="{% url 'blog:blog_delete' object.pk %}" role="button">Удалить</a>
 
                             </div>
-
                         </div>
                     </div>
                 </div>

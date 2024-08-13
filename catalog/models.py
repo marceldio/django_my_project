@@ -4,23 +4,16 @@ from django.db import models
 class Category(models.Model):
     category = models.CharField(
         max_length=100,
-        verbose_name="Категория",
-        help_text="Введите наименование категории",
+        verbose_name="Категория"
     )
     description = models.TextField(
         blank=True,
         null=True,
-        verbose_name="Описание",
-        help_text="Введите описание категории",
+        verbose_name="Описание"
     )
 
-    created_at = models.DateTimeField(
-        verbose_name="Дата записи в БД", help_text="Введите дату записи в БД"
-    )
-    updated_at = models.DateTimeField(
-        verbose_name="Дата обновления записи в БД",
-        help_text="Введите дату обновления записи в БД",
-    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
+    updated_at = models.DateTimeField(auto_now_add=True, verbose_name="Обновлено")
 
     class Meta:
         verbose_name = "Категория"
@@ -34,43 +27,42 @@ class Category(models.Model):
 class Product(models.Model):
     product = models.CharField(
         max_length=100,
-        verbose_name="Наименование",
-        help_text="Введите наименование товара",
+        verbose_name="Наименование"
     )
     description = models.TextField(
-        verbose_name="Описание", help_text="Введите описание товара",
+        verbose_name="Описание",
         blank=True,
-        null=True,
+        null=True
+    )
+    slug = models.CharField(
+        max_length=200,
+        verbose_name='slug',
+        blank=True,
+        null=True
     )
     image = models.ImageField(
-        upload_to="catalog/photo",
-        blank=True,
-        null=True,
+        upload_to="catalog/image",
         verbose_name="Изображение",
-        help_text="Загрузите изображение товара",
+        blank=True,
+        null=True
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
         verbose_name="Категория",
-        help_text="Введите категорию товара",
         blank=True,
         null=True,
-        related_name="products",
+        related_name="products"
     )
-    price = models.PositiveIntegerField(
-        verbose_name="Цена за покупку", help_text="Введите цену за покупку  товара"
+    price = models.PositiveIntegerField(verbose_name="Цена за покупку")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано"  )
+    updated_at = models.DateTimeField(auto_now_add=True, verbose_name="Обновлено")
+    is_published = models.BooleanField(default=True, verbose_name="Опубликовано")
+    view_counter = models.PositiveIntegerField(
+        default=0,
+        verbose_name="Счетчик просмотров",
+        editable=False
     )
-    # created_at = models.DateTimeField(
-    #     verbose_name="Дата записи в БД", help_text="Введите дату записи в БД"
-    # )
-    # updated_at = models.DateTimeField(
-    #     verbose_name="Дата обновления записи в БД",
-    #     help_text="Введите дату обновления записи в БД"
-    # )
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Товар"
