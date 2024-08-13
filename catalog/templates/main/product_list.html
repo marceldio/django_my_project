@@ -7,7 +7,6 @@
             <a class="btn btn-primary" href="{% url 'catalog:product_create' %}">Добавить товар</a>
         </div>
         <div class="row row-cols-1 row-cols-sm-2">
-
             {% for object in object_list %}
             <div class="col">
                 <div class="card shadow-sm">
@@ -17,6 +16,7 @@
                             {% if object.is_published %}
                             {{ object.product }}
                             {{ object.description | slice:100 }}
+                            версия: {{ object.version }}
 
                             {% else %}
                             <span class="badge bg-secondary text-white">
