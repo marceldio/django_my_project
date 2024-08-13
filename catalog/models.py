@@ -55,7 +55,7 @@ class Product(models.Model):
         related_name="products"
     )
     price = models.PositiveIntegerField(verbose_name="Цена за покупку")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано"  )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
     updated_at = models.DateTimeField(auto_now_add=True, verbose_name="Обновлено")
     is_published = models.BooleanField(default=True, verbose_name="Опубликовано")
     view_counter = models.PositiveIntegerField(
@@ -70,4 +70,19 @@ class Product(models.Model):
         ordering = ["product", "description", "category", "price"]
 
     def __str__(self):
-        return self.product
+        return f'{self.product}'
+
+
+class Version(models.Model):
+    title = models.CharField(max_length=150, verbose_name='название')
+    number = models.PositiveIntegerField(verbose_name='номер версии')
+    is_current = models.BooleanField(default=False, verbose_name='активная')
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='товар')
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'версия'
+        verbose_name_plural = 'версии'
