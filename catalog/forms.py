@@ -3,14 +3,16 @@ from django.forms import ModelForm
 from catalog.models import Product, Version
 
 
-# class StyleForMixin:
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         for field_name, field in self.fields.items():
-#             field.widget.attrs['class'] = 'form-control'
+class StyleForMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
 
 
-class ProductForm(ModelForm):
+
+class ProductForm(StyleForMixin, forms.ModelForm):
     class Meta:
         model = Product
         exclude = ('views_counter',)
@@ -33,7 +35,7 @@ class ProductForm(ModelForm):
         return description
 
 
-class VersionForm(forms.ModelForm):
+class VersionForm(StyleForMixin, forms.ModelForm):
     class Meta:
         model = Version
         fields = '__all__'
