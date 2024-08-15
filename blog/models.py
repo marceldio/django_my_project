@@ -1,5 +1,7 @@
 from django.db import models
 
+from catalog.models import NULLABLE
+
 
 class Blog(models.Model):
     title = models.CharField(
@@ -9,16 +11,14 @@ class Blog(models.Model):
     slug = models.CharField(
         max_length=200,
         verbose_name='slug',
-        blank=True,
-        null=True
+        **NULLABLE
     )
     content = models.TextField(
         verbose_name="Содержание"
     )
     image = models.ImageField(
         upload_to="blog/image",
-        blank=True,
-        null=True,
+        **NULLABLE,
         verbose_name="Изображение"
     )
     created_at = models.DateTimeField(auto_now_add=True)
