@@ -15,7 +15,7 @@ class StyleForMixin:
 class ProductForm(StyleForMixin, forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ('views_counter',)
+        exclude = ('views_counter','owner')
 
     # Список запрещенных слов
     forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно',
