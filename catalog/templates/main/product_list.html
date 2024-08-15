@@ -4,7 +4,11 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="col-12 mb-5">
+            {% if user.is_authenticated %}
+            <p>
             <a class="btn btn-primary" href="{% url 'catalog:product_create' %}">Добавить товар</a>
+            </p>
+            {% endif %}
         </div>
         <div class="row row-cols-1 row-cols-sm-2">
             {% for object in object_list %}

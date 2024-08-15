@@ -1,5 +1,9 @@
 from django.db import models
 
+from users.models import User
+
+NULLABLE = {'blank': True, 'null': True}
+
 
 class Category(models.Model):
     category = models.CharField(
@@ -7,8 +11,7 @@ class Category(models.Model):
         verbose_name="Категория"
     )
     description = models.TextField(
-        blank=True,
-        null=True,
+        **NULLABLE,
         verbose_name="Описание"
     )
 
@@ -31,27 +34,23 @@ class Product(models.Model):
     )
     description = models.TextField(
         verbose_name="Описание",
-        blank=True,
-        null=True
+        **NULLABLE
     )
     slug = models.CharField(
         max_length=200,
         verbose_name='slug',
-        blank=True,
-        null=True
+        **NULLABLE
     )
     image = models.ImageField(
         upload_to="catalog/image",
         verbose_name="Изображение",
-        blank=True,
-        null=True
+        **NULLABLE
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
         verbose_name="Категория",
-        blank=True,
-        null=True,
+        **NULLABLE,
         related_name="products"
     )
     price = models.PositiveIntegerField(verbose_name="Цена за покупку")
@@ -62,6 +61,12 @@ class Product(models.Model):
         default=0,
         verbose_name="Счетчик просмотров",
         editable=False
+    )
+    owner = models.ForeignKey(
+        User, verbose_name="Владелец",
+        help_text="Укажите владельца товара",
+        blank=True, null=True,
+        on_delete=models.SET_NULL
     )
 
     class Meta:
