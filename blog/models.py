@@ -1,6 +1,7 @@
 from django.db import models
 
 from catalog.models import NULLABLE
+from users.models import User
 
 
 class Blog(models.Model):
@@ -28,6 +29,12 @@ class Blog(models.Model):
         default=0,
         verbose_name="Счетчик просмотров",
         editable=False
+    )
+    owner = models.ForeignKey(
+        User, verbose_name="Автор",
+        help_text="Укажите автора статьи",
+        blank=True, null=True,
+        on_delete=models.SET_NULL
     )
 
     def __str__(self):

@@ -20,10 +20,10 @@ class ProductCreateView(CreateView, LoginRequiredMixin):
         user = self.request.user
         product.owner = user
         product.save()
-        # if form.is_valid():
-        #     new_product = form.save()
-        #     new_product.slug = slugify(new_product.product)
-        #     new_product.save()
+        if form.is_valid():
+            product = form.save()
+            product.slug = slugify(product.product)
+            product.save()
         return super().form_valid(form)
 
     # def contact(request):
@@ -35,7 +35,7 @@ class ProductCreateView(CreateView, LoginRequiredMixin):
     #     return render(request, 'main/contact.html')
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(UpdateView, LoginRequiredMixin):
     model = Product
     form_class = ProductForm
     template_name = ('main/product_form.html')
@@ -61,7 +61,7 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(DeleteView, LoginRequiredMixin):
     model = Product
     template_name = ('main/product_delete.html')
     success_url = reverse_lazy('catalog:product_list')
