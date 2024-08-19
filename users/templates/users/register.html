@@ -17,7 +17,13 @@
                 </button>
             </div>
             <div class="card-footer">
-                <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary">Назад</a>
+                <div class="d-grid col-12">
+                    <div class="btn-group">
+                        <a href="{% url 'users:login' %}" class="btn btn-outline-info">Вход</a>
+                        <a href="{% url 'users:reset_password' %}" class="btn btn-outline-info">Восстановить пароль</a>
+                    </div>
+                    <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary">Назад</a>
+                </div>
             </div>
         </div>
     </form>
