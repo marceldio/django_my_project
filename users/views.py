@@ -1,7 +1,11 @@
 import secrets
+import random
+import string
+
+from django.contrib.auth.hashers import make_password
 
 from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView
 
@@ -30,14 +34,48 @@ class UserCreateView(CreateView):
             message=f"Перейдите по ссылке для подтверждения регистрации {url}",
             from_email=EMAIL_HOST_USER,
             recipient_list=[user.email],
+            # recipient_list=[self.object.email],
         )
         return super().form_valid(form)
+
 
 def email_verification(request, token):
     user = get_object_or_404(User, token=token)
     user.is_active = True
     user.save()
     return redirect(reverse("users:login"))
+
+
+def generate_random_password(length=10):
+    # Генерация случайного пароля из букв и цифр
+    characters = string.ascii_letters + string.digits
+
+    return ''.join(random.choice(characters) for _ in range(length))
+
+
+def reset_password(request):
+    context = {
+        'success_message': 'Пароль успешно сброшен на email'
+    }
+    if request.method == 'POST':
+        email = request.POST.get('email')
+
+        user = get_object_or_404(User, email=email)
+        new_password = generate_random_password()
+        user.password = make_password(new_password)
+        user.save()
+
+        # Отправка письма с новым паролем
+        send_mail(
+            'Восстановление пароля',
+            f'Ваш новый пароль: {new_password}',
+            from_email = EMAIL_HOST_USER,
+            recipient_list = [user.email]
+        )
+
+        return redirect(reverse('users:login'))
+    return render(request, 'users/reset_password.html')
+
 
 class UserProfileView(UpdateView):
     model = User
