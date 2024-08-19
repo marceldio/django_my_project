@@ -136,8 +136,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_HOST='smtp.yandex.ru'
 EMAIL_PORT=465
-EMAIL_HOST_USER='marceldiowork@yandex.ru'
-EMAIL_HOST_PASSWORD='ropurwyfbhotibth'
+EMAIL_HOST_USER='marceldio****@yandex.ru'
+EMAIL_HOST_PASSWORD='****************'
 EMAIL_USE_SSL=True
 
 SERVER_EMAIL = EMAIL_HOST_USER
